@@ -1,0 +1,6 @@
+name: HubSelector
+version: 1.0-SNAPSHOT
+author: ThatKawaiiSam
+description: Simple Hub Selector
+main: io.github.thatkawaiisam.hubselector.HubSelectorPlugin
+depend: [Redstone]
