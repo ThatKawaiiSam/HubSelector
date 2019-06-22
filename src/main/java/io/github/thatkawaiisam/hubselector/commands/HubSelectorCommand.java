@@ -4,15 +4,14 @@ import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.Default;
 import io.github.thatkawaiisam.hubselector.HubSelectorPlugin;
-import io.github.thatkawaiisam.utils.MessageUtility;
 import org.bukkit.entity.Player;
 
-@CommandAlias("hubselector")
+@CommandAlias("hubselector|lobbyselector")
 public class HubSelectorCommand extends BaseCommand {
 
     @Default
     public void selectServer(Player player) {
-        player.sendMessage(MessageUtility.formatMessage("&aOpening hub selector menu..."));
+        player.sendMessage(HubSelectorPlugin.getInstance().getLanguage().getValue("Opening-Selector", true));
         HubSelectorPlugin.getInstance().getMenu().openMenu(player);
     }
 

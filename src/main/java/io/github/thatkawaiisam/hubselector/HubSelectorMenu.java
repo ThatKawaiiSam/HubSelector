@@ -35,7 +35,7 @@ public class HubSelectorMenu extends Menu {
         Map<Integer, Button> buttons = new HashMap<>();
 
         int button = 0;
-        for (RedstoneServer redstoneServer : RedstoneSharedAPI.getServersFromGroup("hubs")) {
+        for (RedstoneServer redstoneServer : RedstoneSharedAPI.getServersFromGroup("Lobby")) {
             buttons.put(button++, new Button() {
                 @Override
                 public ItemStack getButtonItem(Player player) {
@@ -58,10 +58,13 @@ public class HubSelectorMenu extends Menu {
                 public void clicked(Player player, int slot, ClickType clickType, int hotbarButton) {
                     player.closeInventory();
                     if (redstoneServer.getServerID().equals(RedstoneBukkitAPI.getCurrentServerName())) {
-                        player.sendMessage(MessageUtility.formatMessage("&cYou are already connected to this hub!"));
+                        player.sendMessage(HubSelectorPlugin.getInstance().getLanguage().getValue("Already-Connected", true));
                     } else {
-                        player.sendMessage(MessageUtility.formatMessage("&aSending you to " + redstoneServer.getServerID() + "..."));
-                        BungeeUtility.sendPlayerToServer(HubSelectorPlugin.getInstance(), player, redstoneServer.getServerID());
+                        if (redstoneServer.getData().getState() == ServerState.OFFLINE) {
+                            player.sendMessage(HubSelectorPlugin.getInstance().getLanguage().getValue("Hub-Offline", true));
+                        } else {
+                            BungeeUtility.sendPlayerToServer(HubSelectorPlugin.getInstance(), player, redstoneServer.getServerID());
+                        }
                     }
                 }
             });
@@ -81,11 +84,11 @@ public class HubSelectorMenu extends Menu {
     private String getStatus(RedstoneServer server) {
         ServerState serverState = server.getData().getState();
         if (serverState == ServerState.ONLINE) {
-            return "&aOnline";
+            return HubSelectorPlugin.getInstance().getLanguage().getValue("Status.Online", true);
         } else if (serverState == ServerState.WHITELISTED) {
-            return "&eWhitelisted";
+            return HubSelectorPlugin.getInstance().getLanguage().getValue("Status.Whitelisted", true);
         } else {
-            return "&cOffline";
+            return HubSelectorPlugin.getInstance().getLanguage().getValue("Status.Offline", true);
         }
     }
 }
