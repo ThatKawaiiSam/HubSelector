@@ -1,0 +1,7 @@
+Opening-Selector: "&eOpening lobby selector..."
+Already-Connected: "&cYou are already connected to this hub!"
+Hub-Offline: "&cRequested hub is currently offline!"
+Status:
+  Online: "&aOnline"
+  Whitelisted: "&eWhitelisted"
+  Offline: "&cOffline"

@@ -1,6 +1,7 @@
 name: HubSelector
 version: 1.0-SNAPSHOT
 author: ThatKawaiiSam
-description: Simple Hub Selector
+description: Simple Hub Selector utalising the Redstone Server API.
+website: MC-Market
 main: io.github.thatkawaiisam.hubselector.HubSelectorPlugin
 depend: [Redstone]
